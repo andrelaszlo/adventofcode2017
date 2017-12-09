@@ -66,7 +66,7 @@ def filled_grid(size):
         n += 1
     return x, y, g
 
-def neigbor_sum(g, x, y):
+def neighbor_sum(g, x, y):
     return sum((
         g.get(x-1, y-1) or 0,
         g.get(x  , y-1) or 0,
@@ -78,9 +78,9 @@ def neigbor_sum(g, x, y):
         g.get(x+1, y+1) or 0,
     ))
 
-#x, y, g = filled_grid(368078)
-#solution_1 = abs(x) + abs(y)
-#print("Solution 1:", solution_1)
+x, y, g = filled_grid(368078)
+solution_1 = abs(x) + abs(y)
+print("Solution 1:", solution_1)
 
 def accumulating_grid(n):
     g = Grid()
@@ -88,7 +88,7 @@ def accumulating_grid(n):
         if x == y == 0:
             g.set(x, y, 1)
         else:
-            val = neigbor_sum(g, x, y)
+            val = neighbor_sum(g, x, y)
             g.set(x, y, val)
             if val > n:
                 return val
